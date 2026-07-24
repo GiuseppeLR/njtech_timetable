@@ -1,0 +1,1 @@
+exports.hello = () => console.log("Hello from github npm package");

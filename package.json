@@ -1,0 +1,24 @@
+{
+  "name": "GiuseppeLR@njtech_timetable",
+  "version": "1.0.0",
+  "description": "南工课程表是一款面向南京工业大学学生的课程表管理工具，支持教务系统导入、XLS 导入、手动课程管理、课程提醒、课表分享、深色模式和课程冲突检测。 该程序由Dart语言编写，结合Kotlin和SwiftUI为iOS平台和Android平台提供支持。",
+  "main": "index.js",
+  "directories": {
+    "lib": "lib"
+  },
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://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@github.com/GiuseppeLR/njtech_timetable.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "type": "commonjs",
+  "bugs": {
+    "url": "https://github.com/GiuseppeLR/njtech_timetable/issues"
+  },
+  "homepage": "https://github.com/GiuseppeLR/njtech_timetable#readme"
+}
