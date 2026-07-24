@@ -35,13 +35,14 @@ build/app/outputs/flutter-apk/app-release.apk
 ```
 
 
-可以从本项目的Package下直接安装npm package
-
-```Install from the command line:
+也可以从本项目的Package下直接安装npm package
+- Install from the command line:
+```
 $ npm install @GiuseppeLR/njtech_timetable@1.0.0
 ```
 
-```Install via package.json:
+- Install via package.json:
+```
 "@GiuseppeLR/njtech_timetable": "1.0.0"
 ```
 
