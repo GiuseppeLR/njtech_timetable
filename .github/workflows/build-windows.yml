@@ -1,0 +1,54 @@
+name: Build Windows
+
+on:
+  push:
+    tags:
+      - 'v*'        # 当推送 v* 标签时触发（如 v1.0.0）
+  workflow_dispatch:  # 也支持手动触发
+
+jobs:
+  build-windows:
+    runs-on: windows-latest
+
+    steps:
+      # 1. 拉取代码
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      # 2. 安装 Flutter
+      - name: Setup Flutter
+        uses: subosito/flutter-action@v2
+        with:
+          channel: stable
+          cache: true
+
+      # 3. 获取依赖
+      - name: Install dependencies
+        run: flutter pub get
+
+      # 4. 编译 Windows release
+      - name: Build Windows release
+        run: flutter build windows --release
+
+      # 5. 打包构建产物为 zip
+      - name: Package build artifacts
+        run: |
+          cd build\windows\x64\runner\Release
+          7z a windows-build.zip *
+
+      # 6. 上传构建产物
+      - name: Upload Windows build
+        uses: actions/upload-artifact@v4
+        with:
+          name: windows-release
+          path: build\windows\x64\runner\Release\windows-build.zip
+
+      # 7. 如果是 tag 触发，自动创建 Release 并附加文件
+      - name: Create GitHub Release
+        if: startsWith(github.ref, 'refs/tags/')
+        uses: softprops/action-gh-release@v2
+        with:
+          files: build\windows\x64\runner\Release\windows-build.zip
+          generate_release_notes: true
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
