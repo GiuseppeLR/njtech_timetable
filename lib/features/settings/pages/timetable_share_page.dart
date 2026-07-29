@@ -80,7 +80,6 @@ class TimetableSharePage extends ConsumerWidget {
 
         await Share.shareXFiles(
           [XFile(tempFile.path)],
-          text: '南工课程表分享（${courses.length} 门课程）',
           sharePositionOrigin: sharePositionOrigin,
         );
       } catch (e) {
